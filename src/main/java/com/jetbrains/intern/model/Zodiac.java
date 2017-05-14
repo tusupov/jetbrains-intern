@@ -53,14 +53,14 @@ public class Zodiac {
 
         for (int i = 0; i < zodiacCalendarList.size(); i++)
 
-            if (i == zodiacCalendarList.size()) {
+            if (i == zodiacCalendarList.size() - 1) {
 
                 if(
                     currentDate.before(zodiacCalendarList.get(0)) ||
                     currentDate.after(zodiacCalendarList.get(zodiacCalendarList.size() - 1)) ||
                     currentDate.equals(zodiacCalendarList.get(zodiacCalendarList.size() - 1))
                 ) {
-                    this.name = zodiacNameList.get(11);
+                    this.name = zodiacNameList.get(zodiacCalendarList.size() - 1);
                 }
 
             } else {

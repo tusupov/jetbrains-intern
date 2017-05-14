@@ -30,7 +30,7 @@ public class ZodiacRestControllerTest {
     public void zodiacBadRequest() throws Exception {
 
         mockMvc.perform(get("/zodiac/2/45"))
-                .andDo(print())
+                //.andDo(print())
                 .andExpect(status().isBadRequest())
                 .andExpect(content().string(equalTo("Invalid date!!!")));
 
@@ -96,7 +96,7 @@ public class ZodiacRestControllerTest {
             int day = dateFrom.get(GregorianCalendar.DATE);
 
             mockMvc.perform(get("/zodiac/" + month + "/" + day))
-                    //.andDo(print())
+                    .andDo(print())
                     .andExpect(status().isOk())
                     .andExpect(jsonPath("$.month").value(month))
                     .andExpect(jsonPath("$.day").value(day))
