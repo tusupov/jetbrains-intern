@@ -19,7 +19,7 @@ public class ZodiacController {
 
     @ExceptionHandler
     public ResponseEntity<String> getZodiacExceptionHandler(Exception e) {
-        return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>("Invalid date!!!", HttpStatus.BAD_REQUEST);
     }
 
 }

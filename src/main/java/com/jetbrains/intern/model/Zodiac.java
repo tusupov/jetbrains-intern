@@ -47,24 +47,34 @@ public class Zodiac {
         this.day = day;
         this.isDateValid();
 
+
         GregorianCalendar currentDate = new GregorianCalendar(currentYear, month - 1, day);
 
-        if(currentDate.before(zodiacCalendarList.get(0)) ||
-           currentDate.after(zodiacCalendarList.get(11)) ||
-           currentDate.equals(zodiacCalendarList.get(0))
-        ) {
-            this.name = zodiacNameList.get(11);
-        }
 
-        for (int i = 0; i < zodiacCalendarList.size() - 1; i++)
-            if (
-                currentDate.equals(zodiacCalendarList.get(i)) ||
-                (
-                    currentDate.after(zodiacCalendarList.get(i)) &&
-                    currentDate.before(zodiacCalendarList.get(i + 1))
-                )
-            ) {
-                this.name = zodiacNameList.get(i);
+        for (int i = 0; i < zodiacCalendarList.size(); i++)
+
+            if (i == zodiacCalendarList.size()) {
+
+                if(
+                    currentDate.before(zodiacCalendarList.get(0)) ||
+                    currentDate.after(zodiacCalendarList.get(zodiacCalendarList.size() - 1)) ||
+                    currentDate.equals(zodiacCalendarList.get(zodiacCalendarList.size() - 1))
+                ) {
+                    this.name = zodiacNameList.get(11);
+                }
+
+            } else {
+
+                if (
+                    currentDate.equals(zodiacCalendarList.get(i)) ||
+                    (
+                        currentDate.after(zodiacCalendarList.get(i)) &&
+                        currentDate.before(zodiacCalendarList.get(i + 1))
+                    )
+                ) {
+                    this.name = zodiacNameList.get(i);
+                }
+
             }
 
     }
