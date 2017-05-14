@@ -4,10 +4,15 @@ import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.*;
 
+/**
+ * Знаки зодиака
+ */
 public class Zodiac {
 
+    //Високосный год по умолчанию
     private final int currentYear = 2016;
 
+    //Даты которые начинаются зодиаки
     private final List<GregorianCalendar> zodiacCalendarList = Arrays.asList(
         new GregorianCalendar(currentYear,0,21),
         new GregorianCalendar(currentYear,1,20),
@@ -23,6 +28,7 @@ public class Zodiac {
         new GregorianCalendar(currentYear,11,23)
     );
 
+    //Список названий зодиаков
     private final List<String> zodiacNameList = Arrays.asList(
         "Водолей",
         "Рыбы",
@@ -45,40 +51,39 @@ public class Zodiac {
 
         this.month = month;
         this.day = day;
+
         this.isDateValid();
 
 
+        //Дата по которому надо определить знака зодиака
         GregorianCalendar currentDate = new GregorianCalendar(currentYear, month - 1, day);
 
+        this.name = zodiacNameList.get(zodiacNameList.size() - 1);
+        for (int i = 0; i < zodiacCalendarList.size() - 1; i++) {
 
-        for (int i = 0; i < zodiacCalendarList.size(); i++)
+            GregorianCalendar dateFrom = zodiacCalendarList.get(i);
+            GregorianCalendar dateTo   = zodiacCalendarList.get((i + 1));
 
-            if (i == zodiacCalendarList.size() - 1) {
-
-                if(
-                    currentDate.before(zodiacCalendarList.get(0)) ||
-                    currentDate.after(zodiacCalendarList.get(zodiacCalendarList.size() - 1)) ||
-                    currentDate.equals(zodiacCalendarList.get(zodiacCalendarList.size() - 1))
-                ) {
-                    this.name = zodiacNameList.get(zodiacCalendarList.size() - 1);
-                }
-
-            } else {
-
-                if (
-                    currentDate.equals(zodiacCalendarList.get(i)) ||
-                    (
-                        currentDate.after(zodiacCalendarList.get(i)) &&
-                        currentDate.before(zodiacCalendarList.get(i + 1))
-                    )
-                ) {
-                    this.name = zodiacNameList.get(i);
-                }
-
+            if (
+                currentDate.equals(dateFrom) ||
+                (
+                    currentDate.after(dateFrom) &&
+                    currentDate.before(dateTo)
+                )
+            ) {
+                this.name = zodiacNameList.get(i);
             }
+
+        }
 
     }
 
+    /**
+     * Проверяет месяц и день
+     * на валидност
+     * @return
+     * @throws DateTimeException
+     */
     private boolean isDateValid() throws DateTimeException {
         LocalDate.of(2016, month, day);
         return true;

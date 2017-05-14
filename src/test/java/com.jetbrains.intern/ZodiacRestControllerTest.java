@@ -96,7 +96,7 @@ public class ZodiacRestControllerTest {
             int day = dateFrom.get(GregorianCalendar.DATE);
 
             mockMvc.perform(get("/zodiac/" + month + "/" + day))
-                    .andDo(print())
+                    //.andDo(print())
                     .andExpect(status().isOk())
                     .andExpect(jsonPath("$.month").value(month))
                     .andExpect(jsonPath("$.day").value(day))
