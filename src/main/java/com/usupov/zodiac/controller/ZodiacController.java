@@ -1,6 +1,6 @@
-package com.jetbrains.intern.controller;
+package com.usupov.zodiac.controller;
 
-import com.jetbrains.intern.model.Zodiac;
+import com.usupov.zodiac.model.Zodiac;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

@@ -1,4 +1,4 @@
-package com.jetbrains.intern.model;
+package com.usupov.zodiac.model;
 
 import java.time.DateTimeException;
 import java.time.LocalDate;
